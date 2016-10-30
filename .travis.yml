@@ -1,0 +1,17 @@
+language: elixir
+elixir:
+- 1.2
+otp_release:
+- 18.2
+sudo: false
+addons:
+  postgresql: '9.4'
+before_script:
+- psql -c 'create database upwoot_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: knvaQ+h0hdabDsac+EPUHdsP9ldyKMr68KIlOjEWuD12ZpuFeshpcYKAnJlRHg/sDc6cY2zUBM/0iZBnyn+qh6rOEBXUVOHJ+VZUfM4Ir1q10somvPMPtBwyYxENVU+2VIaNvAFr7Yup/YQ8givq4lEdDQ+3gv3DQ9ALQ/1nup0wB8QKaXLUG6kZtS/wbP7sas7NLaH8wJ2hTmxIg3cWIzXg3wpPCgF0pkJhtTAbQG6Ta+dPic5ussppYqbcKoUlJtWEPsv4foBMUHxfgEyyQONA6biJKbVWxzgqT+3nlB/bxAXAqsQ4+G6rQ1sgcYQsZSAp+aMmbjq1kZbKxLfeg9pCIVukWt3C8sk/VBfLGeD/UUZw8Krcw+6QKd/ljO+1oolu+1yxZL3dAkHJBAGZaiFxSIgH50faILd1gXFnd1/lsPEX7EhX8BACeloCJP5a1FuikMr3ADrsjXWR5aCl3oZ31c/usDBVCefQgsAe+iWh6hTj0WmGagZn++NMysgXAglEUZI17e+EyPId9cbgDZPYdqWnZlc/SIMjWWJVBtYy6AMmT1nUpX8IXPHlagRG3ocC1xzPfSfW9VWnHdFKStfIOEdt50JVFb4abYXGyMs5gDmL/wbpWZgDz2B5vhAL880N8oMGL3qAtDalRHwd7e2NkjPTdRbBdyoTZImFIwA=
+  app: rocky-island-79107
+  on:
+    repo: jartek/elixir-app
