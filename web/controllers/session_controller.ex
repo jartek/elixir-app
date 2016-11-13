@@ -28,7 +28,7 @@ defmodule Upwoot.SessionController do
 
         true ->
           # Unsuccessful login
-          Logger.warning "User " <> username <> " just failed to login"
+          Logger.info "User " <> username <> " just failed to login"
           conn
           |> put_status(401)
           |> render(Upwoot.ErrorView, "401.json") # 401
