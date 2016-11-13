@@ -7,7 +7,7 @@ defmodule Upwoot.Router do
 
   scope "/api", Upwoot do
     pipe_through :api
-    post "/register", RegistrationsController, :create
-    resources "/sessions", SessionsController, only: [:index]
+    post "/register", RegistrationController, :create
+    post "/token", SessionController, :create, as: :login
   end
 end

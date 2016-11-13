@@ -1,7 +1,6 @@
 defmodule Upwoot.User do
   use Upwoot.Web, :model
 
-
   schema "users" do
     field :email, :string
     field :password_hash, :string

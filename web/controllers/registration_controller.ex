@@ -1,11 +1,11 @@
-defmodule Upwoot.RegistrationsController do
+defmodule Upwoot.RegistrationController do
   use Upwoot.Web, :controller
   alias Upwoot.User
 
   def create(conn, %{"data" => %{"type" => "users",
     "attributes" => %{"email" => email,
       "password" => password,
-      "password_confirmation" => password_confirmation}}}) do
+      "password-confirmation" => password_confirmation}}}) do
 
     changeset = User.changeset %User{}, %{email: email,
         password_confirmation: password_confirmation,
