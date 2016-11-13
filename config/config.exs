@@ -5,9 +5,12 @@
 # is restricted to this project.
 use Mix.Config
 
-config :mimes, :types, %{
+config :mime, :types, %{
   "application/vnd.api+json" => ["json-api"]
 }
+
+config :phoenix, :format_encoders,
+  "json-api": Poison
 
 # General application configuration
 config :upwoot,
@@ -20,6 +23,15 @@ config :upwoot, Upwoot.Endpoint,
   render_errors: [view: Upwoot.ErrorView, accepts: ~w(json)],
   pubsub: [name: Upwoot.PubSub,
            adapter: Phoenix.PubSub.PG2]
+
+config :guardian, Guardian,
+  allowed_algos: ["HS512"],
+  verify_module: Guardian.JWT,
+  issuer: "Upwoot",
+  ttl: { 30, :days },
+  verify_issuer: true,
+  secret_key: System.get_env("GUARDIAN_SECRET") || "Ep5mzuymxU8O5SkHBBgF3dNtQXJiCu+KI6FN+GMxqPkDCdFDiZq34r0R1WHp9wIr",
+  serializer: Upwoot.GuardianSerializer
 
 # Configures Elixir's Logger
 config :logger, :console,

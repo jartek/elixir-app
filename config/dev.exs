@@ -24,8 +24,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :upwoot, Upwoot.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "upwoot",
-  password: "upwoot",
+  username: "postgres",
+  password: "postgres",
   database: "upwoot_dev",
   hostname: "localhost",
   pool_size: 10
